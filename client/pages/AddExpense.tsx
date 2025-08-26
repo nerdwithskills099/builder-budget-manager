@@ -3,7 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { useState } from "react";
 import { Plus, DollarSign } from "lucide-react";
 
@@ -15,14 +21,14 @@ const categories = [
   "Shopping",
   "Health & Fitness",
   "Bills & Utilities",
-  "Other"
+  "Other",
 ];
 
 export default function AddExpense() {
   const [formData, setFormData] = useState({
     name: "",
     amount: "",
-    category: ""
+    category: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -34,14 +40,16 @@ export default function AddExpense() {
   };
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   return (
     <Layout>
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-foreground mb-2">Add New Expense</h1>
+          <h1 className="text-3xl font-bold text-foreground mb-2">
+            Add New Expense
+          </h1>
           <p className="text-muted-foreground">
             Track your spending by adding a new expense to your budget.
           </p>
@@ -78,7 +86,9 @@ export default function AddExpense() {
                     placeholder="0.00"
                     className="pl-10"
                     value={formData.amount}
-                    onChange={(e) => handleInputChange("amount", e.target.value)}
+                    onChange={(e) =>
+                      handleInputChange("amount", e.target.value)
+                    }
                     required
                   />
                 </div>
@@ -86,7 +96,12 @@ export default function AddExpense() {
 
               <div className="space-y-2">
                 <Label htmlFor="category">Category</Label>
-                <Select value={formData.category} onValueChange={(value) => handleInputChange("category", value)}>
+                <Select
+                  value={formData.category}
+                  onValueChange={(value) =>
+                    handleInputChange("category", value)
+                  }
+                >
                   <SelectTrigger>
                     <SelectValue placeholder="Select a category" />
                   </SelectTrigger>

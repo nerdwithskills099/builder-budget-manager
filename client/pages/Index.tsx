@@ -15,8 +15,8 @@ export default function Index() {
               <span className="text-primary"> Student Budget</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Take control of your finances with our simple, intuitive budget tracker
-              designed specifically for students.
+              Take control of your finances with our simple, intuitive budget
+              tracker designed specifically for students.
             </p>
           </div>
 
@@ -39,7 +39,8 @@ export default function Index() {
             </div>
             <h3 className="text-xl font-semibold">Track Expenses</h3>
             <p className="text-muted-foreground">
-              Easily log your daily expenses and categorize them to see where your money goes.
+              Easily log your daily expenses and categorize them to see where
+              your money goes.
             </p>
           </Card>
 
@@ -49,7 +50,8 @@ export default function Index() {
             </div>
             <h3 className="text-xl font-semibold">Visual Insights</h3>
             <p className="text-muted-foreground">
-              Get clear insights with charts and graphs that make understanding your spending simple.
+              Get clear insights with charts and graphs that make understanding
+              your spending simple.
             </p>
           </Card>
 
@@ -59,7 +61,8 @@ export default function Index() {
             </div>
             <h3 className="text-xl font-semibold">Stay on Budget</h3>
             <p className="text-muted-foreground">
-              Set spending limits and get alerts to help you stick to your student budget.
+              Set spending limits and get alerts to help you stick to your
+              student budget.
             </p>
           </Card>
         </div>
@@ -70,7 +73,8 @@ export default function Index() {
             Ready to take control of your finances?
           </h2>
           <p className="text-muted-foreground text-lg">
-            Join thousands of students who are already managing their money better.
+            Join thousands of students who are already managing their money
+            better.
           </p>
           <Button size="lg" className="text-lg px-8 py-6">
             Start Tracking Today

@@ -19,14 +19,16 @@ export default function Navigation() {
             <div className="bg-primary rounded-lg p-2">
               <WalletCards className="h-6 w-6 text-primary-foreground" />
             </div>
-            <span className="text-xl font-bold text-foreground">BudgetBuddy</span>
+            <span className="text-xl font-bold text-foreground">
+              BudgetBuddy
+            </span>
           </Link>
-          
+
           <div className="flex space-x-1">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = location.pathname === item.path;
-              
+
               return (
                 <Link
                   key={item.name}
@@ -35,7 +37,7 @@ export default function Navigation() {
                     "flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors",
                     isActive
                       ? "bg-primary text-primary-foreground"
-                      : "text-muted-foreground hover:text-foreground hover:bg-accent"
+                      : "text-muted-foreground hover:text-foreground hover:bg-accent",
                   )}
                 >
                   <Icon className="h-4 w-4" />

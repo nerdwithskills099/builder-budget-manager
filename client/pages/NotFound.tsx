@@ -21,10 +21,12 @@ const NotFound = () => {
           <div className="space-y-4">
             <AlertCircle className="h-16 w-16 text-primary mx-auto" />
             <h1 className="text-4xl font-bold text-foreground">404</h1>
-            <h2 className="text-2xl font-semibold text-foreground">Page Not Found</h2>
+            <h2 className="text-2xl font-semibold text-foreground">
+              Page Not Found
+            </h2>
             <p className="text-xl text-muted-foreground max-w-md">
-              Oops! Looks like you've wandered off the beaten path.
-              The page you're looking for doesn't exist.
+              Oops! Looks like you've wandered off the beaten path. The page
+              you're looking for doesn't exist.
             </p>
           </div>
 
