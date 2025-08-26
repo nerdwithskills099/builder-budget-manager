@@ -20,6 +20,8 @@ import {
   Calendar,
   PieChart as PieChartIcon,
 } from "lucide-react";
+import { useCurrency } from "@/hooks/useCurrency";
+import UPIPayment from "@/components/UPIPayment";
 
 // Mock data - in a real app this would come from your state management/API
 const mockExpenses = [
@@ -93,6 +95,8 @@ const COLORS = [
 ];
 
 export default function Dashboard() {
+  const { formatAmount } = useCurrency();
+
   // Calculate totals by category
   const categoryTotals = mockExpenses.reduce(
     (acc, expense) => {
@@ -170,7 +174,7 @@ export default function Dashboard() {
           </Card>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-6">
+        <div className="grid lg:grid-cols-3 gap-6">
           {/* Pie Chart */}
           <Card>
             <CardHeader>
@@ -239,6 +243,9 @@ export default function Dashboard() {
               </div>
             </CardContent>
           </Card>
+
+          {/* UPI Payment */}
+          <UPIPayment />
         </div>
       </div>
     </Layout>
