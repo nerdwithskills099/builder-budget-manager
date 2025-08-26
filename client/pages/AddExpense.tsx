@@ -12,6 +12,8 @@ import {
 } from "@/components/ui/select";
 import { useState } from "react";
 import { Plus, DollarSign } from "lucide-react";
+import { useCurrency, currencies, Currency } from "@/hooks/useCurrency";
+import CurrencyConverter from "@/components/CurrencyConverter";
 
 const categories = [
   "Food & Dining",
@@ -25,10 +27,12 @@ const categories = [
 ];
 
 export default function AddExpense() {
+  const { selectedCurrency, formatAmount } = useCurrency();
   const [formData, setFormData] = useState({
     name: "",
     amount: "",
     category: "",
+    currency: selectedCurrency,
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -75,22 +79,50 @@ export default function AddExpense() {
                 />
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="amount">Amount</Label>
-                <div className="relative">
-                  <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                  <Input
-                    id="amount"
-                    type="number"
-                    step="0.01"
-                    placeholder="0.00"
-                    className="pl-10"
-                    value={formData.amount}
-                    onChange={(e) =>
-                      handleInputChange("amount", e.target.value)
-                    }
-                    required
-                  />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="amount">Amount</Label>
+                  <div className="relative">
+                    <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-sm text-muted-foreground">
+                      {formData.currency.symbol}
+                    </span>
+                    <Input
+                      id="amount"
+                      type="number"
+                      step="0.01"
+                      placeholder="0.00"
+                      className="pl-8"
+                      value={formData.amount}
+                      onChange={(e) =>
+                        handleInputChange("amount", e.target.value)
+                      }
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="currency">Currency</Label>
+                  <Select
+                    value={formData.currency.code}
+                    onValueChange={(code) => {
+                      const currency = currencies.find(c => c.code === code);
+                      if (currency) {
+                        setFormData(prev => ({ ...prev, currency }));
+                      }
+                    }}
+                  >
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {currencies.map((currency) => (
+                        <SelectItem key={currency.code} value={currency.code}>
+                          {currency.symbol} {currency.name} ({currency.code})
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                 </div>
               </div>
 
@@ -122,6 +154,10 @@ export default function AddExpense() {
             </form>
           </CardContent>
         </Card>
+
+        <div className="mt-8">
+          <CurrencyConverter />
+        </div>
 
         <div className="mt-8 text-center">
           <p className="text-sm text-muted-foreground">
