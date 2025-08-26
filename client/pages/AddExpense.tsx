@@ -40,7 +40,7 @@ export default function AddExpense() {
     // TODO: Add expense logic here
     console.log("Adding expense:", formData);
     // Reset form
-    setFormData({ name: "", amount: "", category: "" });
+    setFormData({ name: "", amount: "", category: "", currency: selectedCurrency });
   };
 
   const handleInputChange = (field: string, value: string) => {
