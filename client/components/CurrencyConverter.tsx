@@ -2,7 +2,13 @@ import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { useCurrency, currencies, Currency } from "@/hooks/useCurrency";
 import { ArrowRightLeft, Calculator } from "lucide-react";
@@ -17,7 +23,11 @@ export default function CurrencyConverter() {
   const handleConvert = () => {
     const numAmount = parseFloat(amount);
     if (!isNaN(numAmount) && numAmount > 0) {
-      const convertedAmount = convertAmount(numAmount, fromCurrency, toCurrency);
+      const convertedAmount = convertAmount(
+        numAmount,
+        fromCurrency,
+        toCurrency,
+      );
       setResult(convertedAmount);
     }
   };
@@ -53,13 +63,16 @@ export default function CurrencyConverter() {
               onChange={(e) => setAmount(e.target.value)}
             />
           </div>
-          
+
           <div className="space-y-2">
             <Label>From Currency</Label>
-            <Select value={fromCurrency.code} onValueChange={(code) => {
-              const currency = currencies.find(c => c.code === code);
-              if (currency) setFromCurrency(currency);
-            }}>
+            <Select
+              value={fromCurrency.code}
+              onValueChange={(code) => {
+                const currency = currencies.find((c) => c.code === code);
+                if (currency) setFromCurrency(currency);
+              }}
+            >
               <SelectTrigger>
                 <SelectValue />
               </SelectTrigger>
@@ -75,9 +88,9 @@ export default function CurrencyConverter() {
         </div>
 
         <div className="flex justify-center">
-          <Button 
-            variant="outline" 
-            size="sm" 
+          <Button
+            variant="outline"
+            size="sm"
             onClick={swapCurrencies}
             className="h-10 w-10 p-0"
           >
@@ -87,10 +100,13 @@ export default function CurrencyConverter() {
 
         <div className="space-y-2">
           <Label>To Currency</Label>
-          <Select value={toCurrency.code} onValueChange={(code) => {
-            const currency = currencies.find(c => c.code === code);
-            if (currency) setToCurrency(currency);
-          }}>
+          <Select
+            value={toCurrency.code}
+            onValueChange={(code) => {
+              const currency = currencies.find((c) => c.code === code);
+              if (currency) setToCurrency(currency);
+            }}
+          >
             <SelectTrigger>
               <SelectValue />
             </SelectTrigger>
@@ -110,15 +126,20 @@ export default function CurrencyConverter() {
 
         {result !== null && (
           <div className="bg-primary/5 rounded-lg p-4 text-center">
-            <p className="text-sm text-muted-foreground mb-1">Converted Amount</p>
+            <p className="text-sm text-muted-foreground mb-1">
+              Converted Amount
+            </p>
             <p className="text-2xl font-bold text-foreground">
-              {toCurrency.symbol}{result.toLocaleString(undefined, { 
-                minimumFractionDigits: 2, 
-                maximumFractionDigits: 2 
+              {toCurrency.symbol}
+              {result.toLocaleString(undefined, {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
               })}
             </p>
             <p className="text-xs text-muted-foreground mt-1">
-              {fromCurrency.symbol}{amount} {fromCurrency.code} = {toCurrency.symbol}{result.toFixed(2)} {toCurrency.code}
+              {fromCurrency.symbol}
+              {amount} {fromCurrency.code} = {toCurrency.symbol}
+              {result.toFixed(2)} {toCurrency.code}
             </p>
           </div>
         )}

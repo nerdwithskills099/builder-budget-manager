@@ -4,14 +4,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
-import { 
-  QrCode, 
-  Smartphone, 
-  CheckCircle, 
-  Copy, 
+import {
+  QrCode,
+  Smartphone,
+  CheckCircle,
+  Copy,
   ExternalLink,
   CreditCard,
-  Wallet
+  Wallet,
 } from "lucide-react";
 import { useCurrency } from "@/hooks/useCurrency";
 
@@ -33,7 +33,7 @@ export default function UPIPayment() {
   const generateUPILink = () => {
     const amount = parseFloat(paymentAmount);
     if (!amount || !upiId) return "";
-    
+
     return `upi://pay?pa=${upiId}&pn=BudgetBuddy&am=${amount}&cu=INR&tn=Budget Payment`;
   };
 
@@ -50,7 +50,7 @@ export default function UPIPayment() {
   const openInApp = (appId: string) => {
     const upiLink = generateUPILink();
     if (upiLink) {
-      window.open(upiLink, '_blank');
+      window.open(upiLink, "_blank");
     }
   };
 
@@ -75,7 +75,7 @@ export default function UPIPayment() {
               onChange={(e) => setPaymentAmount(e.target.value)}
             />
           </div>
-          
+
           <div className="space-y-2">
             <Label htmlFor="upi-id">UPI ID</Label>
             <div className="flex gap-2">
@@ -92,8 +92,8 @@ export default function UPIPayment() {
           </div>
         </div>
 
-        <Button 
-          onClick={generateQRCode} 
+        <Button
+          onClick={generateQRCode}
           className="w-full"
           disabled={!paymentAmount || !upiId}
         >
@@ -159,7 +159,10 @@ export default function UPIPayment() {
         )}
 
         <div className="text-center text-xs text-gray-500">
-          <p>UPI payments are instant and secure. Supported by all major Indian banks.</p>
+          <p>
+            UPI payments are instant and secure. Supported by all major Indian
+            banks.
+          </p>
         </div>
       </CardContent>
     </Card>

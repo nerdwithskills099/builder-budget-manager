@@ -106,9 +106,9 @@ export default function AddExpense() {
                   <Select
                     value={formData.currency.code}
                     onValueChange={(code) => {
-                      const currency = currencies.find(c => c.code === code);
+                      const currency = currencies.find((c) => c.code === code);
                       if (currency) {
-                        setFormData(prev => ({ ...prev, currency }));
+                        setFormData((prev) => ({ ...prev, currency }));
                       }
                     }}
                   >
