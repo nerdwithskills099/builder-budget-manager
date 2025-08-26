@@ -150,7 +150,7 @@ export default function Dashboard() {
               <DollarSign className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">${totalSpent.toFixed(2)}</div>
+              <div className="text-2xl font-bold">{formatAmount(totalSpent)}</div>
               <p className="text-xs text-muted-foreground">This month</p>
             </CardContent>
           </Card>
@@ -163,7 +163,7 @@ export default function Dashboard() {
               <TrendingUp className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">${avgDaily.toFixed(2)}</div>
+              <div className="text-2xl font-bold">{formatAmount(avgDaily)}</div>
               <p className="text-xs text-muted-foreground">Last 7 days</p>
             </CardContent>
           </Card>
@@ -213,7 +213,7 @@ export default function Dashboard() {
                         />
                       ))}
                     </Pie>
-                    <Tooltip formatter={(value) => [`$${value}`, "Amount"]} />
+                    <Tooltip formatter={(value) => [formatAmount(Number(value)), "Amount"]} />
                   </PieChart>
                 </ResponsiveContainer>
               </div>
@@ -244,7 +244,7 @@ export default function Dashboard() {
                       </div>
                     </div>
                     <div className="text-sm font-medium">
-                      ${expense.amount.toFixed(2)}
+                      {expense.currency === 'INR' ? '₹' : '$'}{expense.amount.toFixed(2)}
                     </div>
                   </div>
                 ))}
