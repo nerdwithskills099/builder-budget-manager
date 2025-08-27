@@ -92,12 +92,12 @@ const mockExpenses = [
 ];
 
 const COLORS = [
-  "#8b5cf6", // primary purple
+  "#22c55e", // primary green
   "#06b6d4", // cyan
   "#10b981", // emerald
   "#f59e0b", // amber
   "#ef4444", // red
-  "#8b5cf6", // purple
+  "#16a34a", // green
   "#6366f1", // indigo
   "#ec4899", // pink
 ];
